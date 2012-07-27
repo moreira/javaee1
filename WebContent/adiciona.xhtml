@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+		<meta charset="UTF-8"/>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h1>Cadastrão</h1>
+			<h:outputText for="nome" value="Nome:"/>
+			<h:inputText value="#{contatoMB.contato.nome}" id="nome"/>
+			<h:outputText for="telefone" value="Telefone:"/>
+			<h:inputText value="#{contatoMB.contato.telefone}" id="telefone"/>
+			<h:commandButton value="Salvar" action="#{contatoMB.salvar}"/>
+		</h:form>
+		<h:form>
+			<h:dataTable value="#{contatoMB.contatos}" var="c">
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					<h:outputText value="#{c.id}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{c.nome}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Telefone</f:facet>
+					<h:outputText value="#{c.telefone}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Remover</f:facet>
+					<h:commandLink value="remover" action="#{contatoMB.remover(c)}"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</h:body>
+</html>

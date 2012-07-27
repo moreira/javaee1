@@ -1,0 +1,38 @@
+JBOSS/standalone/configuration/standalone.xml
+
+<datasource
+        jndi-name="java:/mysqlDS" pool-name="my_pool"
+        enabled="true" jta="true"
+        use-java-context="true" use-ccm="true">
+    <connection-url>
+        jdbc:mysql://localhost:3306/qcon1
+    </connection-url>
+    <driver>
+        mysql
+    </driver>
+    <security>
+        <user-name>root</user-name>
+        <password></password>
+    </security>
+    <statement>
+        <prepared-statement-cache-size>
+            100
+        </prepared-statement-cache-size>
+        <share-prepared-statements/>
+    </statement>
+</datasource>
+
+
+
+JBOSS/modules/com/mysql/main/mysql-connector.....jar
+JBOSS/modules/com/mysql/main/module.xml
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<module xmlns="urn:jboss:module:1.0" name="com.mysql">
+  <resources>
+    <resource-root path="mysql-connector-java-5.1.17-bin.jar"/>
+  </resources>
+  <dependencies>
+    <module name="javax.api"/>
+  </dependencies>
+</module>
