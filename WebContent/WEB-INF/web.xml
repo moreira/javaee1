@@ -12,4 +12,27 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Url de autenticacao</web-resource-name>
+			<url-pattern>/adiciona.jsf</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>*</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsf</form-login-page>
+			<form-error-page>/login.jsf?message=login incorreto</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<role-name>*</role-name>
+	</security-role>
 </web-app>
