@@ -36,3 +36,51 @@ JBOSS/modules/com/mysql/main/module.xml
     <module name="javax.api"/>
   </dependencies>
 </module>
+
+
+
+
+Security:
+
+standalone.xml
+<security-domain name="qcon1sec" cache-type="default">
+                    <authentication>
+                        <login-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="java:jboss/datasources/mysqlDS"/>
+                            <module-option name="principalsQuery" value="select password from users where login like ?"/>
+                            <module-option name="rolesQuery" value="select role, 'Roles' from roles where login like ?"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
+                
+                
+jboss-web.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <security-domain>java:/jaas/qcon1sec</security-domain>   
+</jboss-web>
+
+
+web.xml
+<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Url de autenticacao</web-resource-name>
+			<url-pattern>/adiciona.jsf</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>*</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsf</form-login-page>
+			<form-error-page>/login.jsf?message=login incorreto</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<role-name>*</role-name>
+	</security-role>
