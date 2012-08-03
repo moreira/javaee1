@@ -25,4 +25,8 @@ public class ContatoDAO {
 	public void remove(Contato contato) {
 		manager.remove(manager.merge(contato));
 	}
+
+	public Contato busca(Long id) {
+		return manager.find(Contato.class, id);
+	}
 }

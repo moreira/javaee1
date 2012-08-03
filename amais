@@ -84,3 +84,9 @@ web.xml
 	<security-role>
 		<role-name>*</role-name>
 	</security-role>
+	
+	
+REST:
+tive que criar uma classe para configurar o caminha das coisas rest "JaxRsApplication", 
+fora isso anotar a classe contato com @XmlRootElement, depois só criar as coisas com as 
+anotações do Jax-rs

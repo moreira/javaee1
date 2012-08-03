@@ -12,7 +12,7 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-
+	
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Url de autenticacao</web-resource-name>
